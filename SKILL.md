@@ -1,6 +1,7 @@
 ---
 name: architect-coder
 description: Use for non-trivial repository-based software engineering tasks where architecture, compatibility, tests, benchmarks, safe local knowledge-base access, or evidence-backed acceptance materially affect the outcome. Avoid for simple explanations, isolated snippets, translations, exam writing, or one-off shell commands.
+compatibility: Portable Agent Skills core. Optional scripts require Python 3; Obsidian helpers require a local `.architect-coder.json`.
 ---
 
 # Architect Coder
@@ -17,6 +18,13 @@ changes and evidence needed to accept them.
 
 它不是普通聊天、翻译、考试答题或一次性命令工具；只有当架构决策、代码实现、
 重构、性能优化、Obsidian 知识同步或证据化验收会影响结果时才应该使用。
+
+## Portability
+
+This skill is designed to run as a portable Agent Skill, not as a Codex-only
+prompt. Keep `SKILL.md` as the runtime contract, keep relative paths intact, and
+read [agent_portability.md](references/agent_portability.md) when installing,
+packaging, or adapting it for Codex, Claude Code, or another Agent Skills client.
 
 ## Operating contract
 
