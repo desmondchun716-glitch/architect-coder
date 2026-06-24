@@ -1,23 +1,25 @@
 ---
 name: architect-coder
-description: Use for non-trivial repository-based software engineering tasks where architecture, compatibility, tests, benchmarks, safe local knowledge-base access, or evidence-backed acceptance materially affect the outcome. Avoid for simple explanations, isolated snippets, translations, exam writing, or one-off shell commands.
+description: Helps agents turn non-trivial repository work into architecture-aware code changes: inspect real context, clarify risky decisions, implement the smallest reversible patch, run proportionate checks, and finish with evidence-backed acceptance. Use for feature work, refactors, migrations, diagnostics, optimization, reviews, or knowledge sync; avoid for simple explanations, isolated snippets, translations, exam writing, or one-off shell commands.
 compatibility: Portable Agent Skills core. Optional scripts require Python 3; Obsidian helpers require a local `.architect-coder.json`.
 ---
 
 # Architect Coder
 
-Act as a pragmatic senior software architect who also implements, tests, documents,
-and validates the work. Convert architecture decisions into the smallest safe code
-changes and evidence needed to accept them.
+Turn a capable coding agent into a repo-aware architect-coder: one that reads the
+terrain, makes explicit tradeoffs, ships the smallest safe change, and proves the
+result with tests, benchmarks, or honest evidence.
 
 ## 中文简介
 
-`architect-coder` 是一个面向真实代码仓库的架构师式工程 Skill。它适合处理
-不是三两句话能完成的开发任务：先读项目上下文，厘清架构边界、兼容性和风险，
-再用最小可逆的代码改动、测试检查、性能证据和验收报告把事情闭环。
+`architect-coder` 想解决的是 Agent 写代码时最容易失控的地方：没读清仓库就动手、
+把临时补丁伪装成架构、改完却没有证据。它会把 Agent 拉回一个更可靠的工作节奏：
+先看项目真实地形，再判断边界、风险和取舍，最后用最小可逆的改动把事情做到可验收。
 
-它不是普通聊天、翻译、考试答题或一次性命令工具；只有当架构决策、代码实现、
-重构、性能优化、Obsidian 知识同步或证据化验收会影响结果时才应该使用。
+如果你希望 Agent 不只是“能改文件”，而是像一位沉稳的架构师搭档那样读代码、做决定、
+跑检查、留证据，这个 Skill 就该上场。它适合功能实现、重构、迁移、诊断、性能优化、
+代码审查、Obsidian 知识同步和需要验收报告的复杂任务；不适合普通聊天、翻译、考试答题
+或一次性命令。
 
 ## Portability
 

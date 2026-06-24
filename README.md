@@ -1,19 +1,24 @@
 # architect-coder
 
-`architect-coder` is a portable Agent Skill for architecture-led repository
-engineering. It helps an agent inspect a real codebase, make the smallest safe
-implementation changes, validate them with evidence, and close with a practical
-acceptance report.
+Architecture-aware coding for agents that need to change real repositories
+without losing the plot.
 
-中文：这是一个面向真实代码仓库的架构师式工程 Skill。它不是普通聊天模板，而是给
-Codex、Claude Code 和兼容 Agent Skills 的其他 Agent 使用的技能包：先读上下文，
-再处理架构边界、兼容性、测试、性能、知识库同步和验收证据。
+`architect-coder` turns a coding agent into a repo-aware engineering partner:
+one that reads the codebase before touching it, makes tradeoffs explicit, keeps
+changes small and reversible, and closes with tests, benchmarks, or honest
+evidence.
+
+中文：把“会写代码的 Agent”，升级成“会读仓库、会做取舍、会拿证据收尾的架构师搭档”。
+它不是普通聊天模板，而是给 Codex、Claude Code 和兼容 Agent Skills 的其他 Agent
+使用的技能包：先看项目真实地形，再处理架构边界、兼容性、测试、性能、知识库同步和
+验收证据。
 
 ## When To Use
 
-Use this skill for non-trivial repository work: architecture decisions, feature
-implementation, refactors, migrations, diagnostics, optimization, code review,
-Obsidian knowledge sync, or evidence-backed acceptance.
+Use this skill when a patch needs judgment, not just keystrokes: architecture
+decisions, feature implementation, refactors, migrations, diagnostics,
+optimization, code review, Obsidian knowledge sync, or evidence-backed
+acceptance.
 
 Avoid it for simple explanations, isolated snippets, translations, exam writing,
 or one-off shell commands.
