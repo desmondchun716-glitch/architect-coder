@@ -1,17 +1,23 @@
 # architect-coder
 
-Architecture-aware coding for agents that need to change real repositories
-without losing the plot.
+When a product grows, code generation is no longer enough. You need decisions
+that survive future changes, refactors that respect existing boundaries, tests
+that mean something, and architecture memory that future agents can actually use.
 
-`architect-coder` turns a coding agent into a repo-aware engineering partner:
-one that reads the codebase before touching it, makes tradeoffs explicit, keeps
-changes small and reversible, and closes with tests, benchmarks, or honest
-evidence.
+`architect-coder` is a portable Agent Skill for that stage of building. It guides
+coding agents through architecture-aware repository work: reading the terrain,
+stress-testing decisions, planning reversible changes, implementing narrowly,
+validating honestly, and turning important decisions into agent-ready ADRs and
+safe Obsidian knowledge assets.
 
-中文：把“会写代码的 Agent”，升级成“会读仓库、会做取舍、会拿证据收尾的架构师搭档”。
-它不是普通聊天模板，而是给 Codex、Claude Code 和兼容 Agent Skills 的其他 Agent
-使用的技能包：先看项目真实地形，再处理架构边界、兼容性、测试、性能、知识库同步和
-验收证据。
+如果你想做的不是一次性 demo，而是一个真正会长期迭代的大项目、大产品，
+`architect-coder` 就是给 Coding Agent 加上的架构师工作流。它不会让 AI 一上来就
+乱改文件，而是先读懂仓库地形，识别风险、边界和取舍，再用最小可逆的方式完成实现、
+重构、迁移或优化。
+
+每一次关键修改都要有检查、有证据、有验收；每一个长期架构决策都可以沉淀为
+Agent-ready ADR 和安全的 Obsidian 架构记忆。它的目标不是让 AI 更快地堆代码，
+而是让你的产品越做越大时，依然清晰、稳定、可维护。
 
 ## When To Use
 
