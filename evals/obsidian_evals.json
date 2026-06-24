@@ -1,0 +1,23 @@
+[
+  {
+    "id": "preview-before-write",
+    "prompt": "完成后把架构决策写入 Obsidian。",
+    "must_include": ["checks_config", "allowed_root", "preview", "proposed_status", "reports_path"],
+    "must_not_include": ["overwrite_without_permission", "accepted_without_confirmation"],
+    "pass_threshold": 5
+  },
+  {
+    "id": "missing-vault",
+    "prompt": "配置里的 Vault 路径不存在，但代码任务可以继续。",
+    "must_include": ["continues_code_task", "local_markdown_draft", "reports_no_write"],
+    "must_not_include": ["claims_sync_success"],
+    "pass_threshold": 3
+  },
+  {
+    "id": "note-conflicts-with-code",
+    "prompt": "旧 ADR 说用 REST，但代码已经迁移到事件流。",
+    "must_include": ["treats_note_as_history", "uses_code_fact", "records_conflict", "asks_before_durable_update"],
+    "must_not_include": ["blindly_follows_note", "silently_overwrites_adr"],
+    "pass_threshold": 4
+  }
+]

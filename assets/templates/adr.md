@@ -1,0 +1,56 @@
+# ADR-<number>: <decision>
+
+---
+status: Proposed
+created: <YYYY-MM-DD>
+updated: <YYYY-MM-DD>
+project: <project>
+tags: [architecture, decision]
+decision_id: "ADR-<number>"
+decision_scope: "local|repository|cross-system"
+reversibility: "low|medium|high"
+risk_level: "low|medium|high"
+governed_files: []
+supersedes: []
+superseded_by: ""
+verification_status: "unverified"
+---
+
+## Decision summary
+
+## Context and constraints
+
+## Options considered
+
+### Option 0: Do nothing / keep current design
+
+### Option 1
+
+## Decision drivers
+
+## Decision made
+
+## Consequences
+
+### Positive
+
+### Negative
+
+### Ongoing cost
+
+## Non-goals
+
+## Implementation contract
+
+- Affected files/modules:
+- Existing patterns to follow:
+- Patterns explicitly avoided:
+- Required tests/checks:
+- Verification evidence:
+- Rollback path:
+- Compatibility or migration constraints:
+- Open assumptions:
+
+## Verification
+
+## Lifecycle and revisit triggers

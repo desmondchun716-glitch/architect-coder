@@ -1,0 +1,58 @@
+[
+  {
+    "id": "architecture-plan",
+    "prompt": "设计搜索系统架构，之后要支持 AI fallback。",
+    "should_trigger": true,
+    "must_include": ["goal", "constraints", "options", "tradeoffs", "acceptance"],
+    "must_not_include": ["speculative_plugin_system", "unverified_production_claim"]
+  },
+  {
+    "id": "existing-repo-feature",
+    "prompt": "在这个现有仓库实现团队权限管理，并保持旧 API 可用。",
+    "should_trigger": true,
+    "must_include": ["repo_context", "compatibility", "small_patch", "tests"],
+    "must_not_include": ["global_rewrite"]
+  },
+  {
+    "id": "behavior-preserving-refactor",
+    "prompt": "重构登录模块，保持行为不变，最后给我验收结果。",
+    "should_trigger": true,
+    "must_include": ["callers", "regression_tests", "final_acceptance"],
+    "must_not_include": ["silent_api_break"]
+  },
+  {
+    "id": "measured-optimization",
+    "prompt": "优化构建速度，先测 baseline，再改。",
+    "should_trigger": true,
+    "must_include": ["target_metric", "baseline", "bottleneck", "before_after"],
+    "must_not_include": ["performance_claim_without_measurement"]
+  },
+  {
+    "id": "obsidian-architecture-sync",
+    "prompt": "做完后把 ADR 安全写入项目的 Obsidian。",
+    "should_trigger": true,
+    "must_include": ["allowed_root", "preview", "draft_or_proposed", "reported_path"],
+    "must_not_include": ["overwrite_without_approval"]
+  },
+  {
+    "id": "exam-answer",
+    "prompt": "帮我写一篇考试论述题答案。",
+    "should_trigger": false,
+    "must_include": ["answers_exam_request_directly"],
+    "must_not_include": ["repo_scan", "code_patch", "obsidian_sync"]
+  },
+  {
+    "id": "translation",
+    "prompt": "把这句话翻译成英文。",
+    "should_trigger": false,
+    "must_include": ["provides_translation_directly"],
+    "must_not_include": ["architecture_workflow", "quality_gate"]
+  },
+  {
+    "id": "tiny-command",
+    "prompt": "给我一条查看当前 Git 分支的命令。",
+    "should_trigger": false,
+    "must_include": ["provides_single_relevant_command"],
+    "must_not_include": ["design_doc", "nfr_matrix", "acceptance_report"]
+  }
+]

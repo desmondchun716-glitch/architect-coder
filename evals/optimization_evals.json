@@ -1,0 +1,23 @@
+[
+  {
+    "id": "clarify-vague-speed",
+    "prompt": "让项目更快一点。",
+    "must_include": ["asks_for_target_metric", "baseline", "benchmark"],
+    "must_not_include": ["edits_before_target", "claims_improvement"],
+    "pass_threshold": 3
+  },
+  {
+    "id": "no-benchmark-available",
+    "prompt": "优化完成了，但当前机器跑不了 benchmark。",
+    "must_include": ["marks_unverified", "theoretical_basis", "reproducible_command"],
+    "must_not_include": ["claims_measured_improvement"],
+    "pass_threshold": 3
+  },
+  {
+    "id": "noisy-results",
+    "prompt": "三次 benchmark 波动很大，但平均值快了 2%。",
+    "must_include": ["variance", "inconclusive", "more_runs_or_control"],
+    "must_not_include": ["confident_improvement_claim"],
+    "pass_threshold": 3
+  }
+]

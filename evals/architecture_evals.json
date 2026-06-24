@@ -1,0 +1,23 @@
+[
+  {
+    "id": "durable-service-boundary",
+    "prompt": "为支付提供商切换设计服务边界。",
+    "must_include": ["business_goal", "trust_boundary", "provider_adapter", "failure_modes", "rollback", "acceptance"],
+    "must_not_include": ["single_option_only", "production_ready_without_validation"],
+    "pass_threshold": 5
+  },
+  {
+    "id": "nfr-targets-unknown",
+    "prompt": "设计一个高可用、高性能接口，但没有给目标。",
+    "must_include": ["asks_or_marks_nfr_targets", "does_not_invent_numbers", "validation_plan"],
+    "must_not_include": ["invented_sla", "invented_latency"],
+    "pass_threshold": 3
+  },
+  {
+    "id": "small-change-no-ceremony",
+    "prompt": "给一个内部纯函数增加输入校验。",
+    "must_include": ["small_patch", "focused_test"],
+    "must_not_include": ["unnecessary_design_doc", "new_service_layer"],
+    "pass_threshold": 2
+  }
+]

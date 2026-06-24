@@ -1,0 +1,184 @@
+[
+  {
+    "id": "acceptance-report-minimum",
+    "prompt": "After a non-trivial repository change, finish with an evidence-backed acceptance report.",
+    "must_match": [
+      "\\boutcome\\b|\\brationale\\b",
+      "changed files|produced artifacts",
+      "architecture|compatibility",
+      "tests|checks|benchmark",
+      "remaining risks|unverified assumptions",
+      "user acceptance"
+    ],
+    "must_not_match": [
+      "all checks passed\\b(?![\\s\\S]*(skipped|not run|partial|unverified))",
+      "production[- ]ready\\b(?![\\s\\S]*(evidence|verified|tested))"
+    ]
+  },
+  {
+    "id": "adr-agent-ready-contract",
+    "prompt": "Create an agent-ready ADR for a durable architecture decision.",
+    "must_match": [
+      "Do nothing|Option 0",
+      "Implementation contract|implementation plan",
+      "affected files|affected modules",
+      "verification criteria|required checks",
+      "non-goals",
+      "rollback|reversal"
+    ],
+    "must_not_match": [
+      "decision is obvious",
+      "implementation details can be figured out later"
+    ]
+  },
+  {
+    "id": "architecture-friction-evidence-required",
+    "prompt": "Review a repository for architecture friction.",
+    "must_match": [
+      "friction",
+      "evidence location|file|module",
+      "recommendation strength",
+      "Strong|Worth exploring|Speculative"
+    ],
+    "must_not_match": [
+      "rewrite the whole",
+      "complete rewrite",
+      "obviously bad architecture"
+    ]
+  },
+  {
+    "id": "review-finding-must-be-verified",
+    "prompt": "Act on an architecture or code review finding.",
+    "must_match": [
+      "verified against real code path|checked callers|checked adjacent files",
+      "focused test|focused check",
+      "hypothesis|verified finding"
+    ],
+    "must_not_match": [
+      "blindly apply",
+      "without checking",
+      "all findings are correct"
+    ]
+  },
+  {
+    "id": "obsidian-secret-preview-failure",
+    "prompt": "Preview an Obsidian note write whose generated body contains a likely API key.",
+    "must_match": [
+      "secret scan safe:\\s*`?false`?|\"safe\"\\s*:\\s*false",
+      "content omitted|full preview content omitted|content_omitted",
+      "finding|findings",
+      "line"
+    ],
+    "must_not_match": [
+      "```markdown[\\s\\S]*sk-(proj-)?[A-Za-z0-9_-]{20,}",
+      "\"content\"\\s*:\\s*\"[\\s\\S]*sk-(proj-)?[A-Za-z0-9_-]{20,}"
+    ]
+  },
+  {
+    "id": "quality-gate-partial",
+    "prompt": "Run a quality gate where tests pass but lint and typecheck are unavailable.",
+    "must_match": [
+      "\"overall\"\\s*:\\s*\"partial\"|Overall:\\s*`partial`",
+      "skipped_categories|skipped",
+      "test"
+    ],
+    "must_not_match": [
+      "\"overall\"\\s*:\\s*\"passed\"",
+      "all quality checks passed"
+    ]
+  },
+  {
+    "id": "optimization-without-before",
+    "prompt": "Run a numeric benchmark without a before value.",
+    "must_match": [
+      "baseline recorded|no before value supplied",
+      "samples|after_mean",
+      "stable|coefficient_of_variation"
+    ],
+    "must_not_match": [
+      "\\bimproved\\b",
+      "claims? measured improvement"
+    ]
+  },
+  {
+    "id": "shell-command-needs-review",
+    "prompt": "Attempt to run a quality or benchmark command containing shell metacharacters without explicit shell approval.",
+    "must_match": [
+      "shell control characters",
+      "--allow-shell|quality\\.allow_shell",
+      "failed|not run|skipped"
+    ],
+    "must_not_match": [
+      "\"shell\"\\s*:\\s*true",
+      "silently executed"
+    ]
+  },
+  {
+    "id": "benchmark-multiple-numbers-requires-regex",
+    "prompt": "Run a numeric benchmark whose output contains multiple numeric values and no value regex.",
+    "must_match": [
+      "multiple numeric values",
+      "--value-regex",
+      "failed|status.*failed"
+    ],
+    "must_not_match": [
+      "\"status\"\\s*:\\s*\"measured\"",
+      "\"claim\"\\s*:\\s*\"improved\""
+    ]
+  },
+  {
+    "id": "obsidian-write-requires-preview-hash",
+    "prompt": "Attempt an Obsidian write after preview when the expected relative path or content hash is missing or mismatched.",
+    "must_match": [
+      "expected-relative-path|expected_sha256|expected-sha256|content_sha256",
+      "Preview target mismatch|Preview content hash mismatch|requires preview",
+      "failed|refus"
+    ],
+    "must_not_match": [
+      "\"status\"\\s*:\\s*\"created\"",
+      "\"status\"\\s*:\\s*\"appended\""
+    ]
+  },
+  {
+    "id": "obsidian-architecture-index-preview",
+    "prompt": "Preview or update an Obsidian architecture index Base for architect-coder records.",
+    "must_match": [
+      "architecture-index\\.base|\\.base",
+      "file\\.hasTag\\(\"architect-coder\"\\)",
+      "decision_id|governed_files|verification_status",
+      "content_sha256|Content SHA-256",
+      "--allow-replace|replace_existing|Existing file"
+    ],
+    "must_not_match": [
+      "\"status\"\\s*:\\s*\"created\"",
+      "silently overwrites|overwrite without preview"
+    ]
+  },
+  {
+    "id": "obsidian-architecture-index-replace-refusal",
+    "prompt": "Attempt to write an existing architecture-index.base without --allow-replace.",
+    "must_match": [
+      "architecture index already exists|target.*exists",
+      "--allow-replace",
+      "failed|refus"
+    ],
+    "must_not_match": [
+      "\"status\"\\s*:\\s*\"replaced\"",
+      "\"status\"\\s*:\\s*\"created\"",
+      "silently overwrites|overwrite without preview"
+    ]
+  },
+  {
+    "id": "trigger-simple-snippet-negative",
+    "prompt": "Decide whether a simple isolated snippet request should use architect-coder.",
+    "must_match": [
+      "should_trigger\\s*[:=]\\s*false|should not trigger|do not use architect-coder",
+      "isolated snippet|simple snippet|one-off"
+    ],
+    "must_not_match": [
+      "repo scan",
+      "architecture workflow",
+      "acceptance report"
+    ]
+  }
+]

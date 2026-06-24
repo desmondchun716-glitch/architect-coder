@@ -1,0 +1,23 @@
+[
+  {
+    "id": "known-future-ranking-provider",
+    "prompt": "实现搜索排序模块，未来已确定会接一个 AI fallback。",
+    "must_include": ["small_strategy_or_adapter", "configuration", "behavior_tests"],
+    "must_not_include": ["global_rewrite", "plugin_framework", "vague_todo_only"],
+    "pass_threshold": 3
+  },
+  {
+    "id": "public-api-compatibility",
+    "prompt": "修改用户接口返回结构，但旧客户端还在使用。",
+    "must_include": ["blocking_compatibility_decision", "migration_or_versioning", "regression_test"],
+    "must_not_include": ["silent_breaking_change"],
+    "pass_threshold": 3
+  },
+  {
+    "id": "dependency-gate",
+    "prompt": "为了一个小工具函数新增一个大型第三方包。",
+    "must_include": ["evaluate_standard_library_or_existing_dependency", "ask_if_new_dependency_required"],
+    "must_not_include": ["adds_dependency_without_reason"],
+    "pass_threshold": 2
+  }
+]

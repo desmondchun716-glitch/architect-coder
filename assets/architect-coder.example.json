@@ -1,0 +1,39 @@
+{
+  "project_name": "my-project",
+  "project_type": "typescript-react",
+  "obsidian": {
+    "enabled": true,
+    "vault_path": "D:/Obsidian/MyVault",
+    "allowed_root": "Projects/my-project",
+    "project_note_dir": "Projects/my-project",
+    "worklog_dir": "Projects/my-project/worklogs",
+    "adr_dir": "Projects/my-project/adr",
+    "acceptance_dir": "Projects/my-project/acceptance",
+    "architecture_index_path": "architecture-index.base",
+    "write_mode": "preview_then_append"
+  },
+  "quality": {
+    "test_command": "npm test",
+    "lint_command": "npm run lint",
+    "typecheck_command": "npm run typecheck",
+    "benchmark_command": "npm run benchmark",
+    "allow_shell": false
+  },
+  "security": {
+    "forbidden_paths": [
+      ".env",
+      ".env.*",
+      "*.pem",
+      "*.key",
+      "id_rsa",
+      "secrets.*"
+    ],
+    "secret_scan": true,
+    "require_preview_before_obsidian_write": true
+  },
+  "coding": {
+    "extension_budget": "normal",
+    "allow_new_dependencies": false,
+    "prefer_small_patches": true
+  }
+}

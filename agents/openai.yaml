@@ -1,0 +1,4 @@
+interface:
+  display_name: "Architect Coder"
+  short_description: "架构师式编码：小步实现、安全验证、证据化验收 / Architecture-led coding with safe validation"
+  default_prompt: "Use $architect-coder for this non-trivial repository task. Clarify blocking decisions, make the smallest authorized change if implementation is requested, run proportionate checks, and finish with evidence-backed acceptance."
