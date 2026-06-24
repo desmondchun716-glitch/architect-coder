@@ -5,6 +5,7 @@
 | Source | Trust tier | Contribution | Usage constraints |
 |---|---|---|---|
 | `architect-coder_v0.2.3_improvement_discussion.md` | user-provided design input | Proposed agent-ready ADRs, trigger gate, `Option 0`, stress test, friction scan, recommendation strength, ADR metadata, and review-finding verification. | Adapted into compact runtime rules; no Council protocol, child skills, enterprise governance, or general PKM workflow adopted. |
+| `architect-coder_v0.2.4_strict_review_summary.md` | user-provided strict review input | Identified concrete leakage risks in Obsidian read summaries and benchmark extraction metadata, plus deterministic hardening items for eval IDs, secret patterns, quality-gate wording, and preview wording. | Accepted targeted hardening only; did not add broad DLP, global vault scans, LLM judges, or unverified Obsidian Base metadata views. |
 | `architect-coder-review-context.md` | local project review context | Confirmed current v0.2.2 structure, validation history, and intentional constraints. | Used to preserve one integrated skill and avoid README/CHANGELOG/Council expansion. |
 
 ## Runtime guidance inputs

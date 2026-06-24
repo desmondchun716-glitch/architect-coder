@@ -27,7 +27,7 @@ CONTRACT_REQUIRED = {
 
 def _load_array(path: Path) -> list[Any]:
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        data = json.loads(path.read_text(encoding="utf-8-sig"))
     except json.JSONDecodeError as exc:
         raise ValueError(f"{path}: invalid JSON: {exc}") from exc
     if not isinstance(data, list):
@@ -86,11 +86,16 @@ def load_contracts(eval_dir: Path) -> tuple[list[dict[str, Any]], list[str]]:
     except ValueError as exc:
         return [], [str(exc)]
     contracts: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
     for item in raw_cases:
         issues.extend(_check_shape(path, item, CONTRACT_REQUIRED))
         if not isinstance(item, dict):
             continue
         case_id = item.get("id", "<missing id>")
+        if isinstance(case_id, str):
+            if case_id in seen_ids:
+                issues.append(f"{path}:{case_id}: duplicate contract id")
+            seen_ids.add(case_id)
         for field in ("must_match", "must_not_match"):
             for pattern in item.get(field, []):
                 try:

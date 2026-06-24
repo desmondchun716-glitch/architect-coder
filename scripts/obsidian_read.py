@@ -12,11 +12,13 @@ from _common import (
     obsidian_roots,
     run_cli,
 )
+from secret_scan_guard import redact_text, scan_text
 
 
 def summarize(text: str, limit: int = 280) -> str:
+    text = text.lstrip("\ufeff")
     lines = [
-        line.strip()
+        line.strip().lstrip("\ufeff")
         for line in text.splitlines()
         if line.strip() and not line.strip().startswith("---")
     ]
@@ -52,21 +54,27 @@ def main() -> int:
         score = sum(haystack.count(term) for term in terms)
         if score:
             stat = path.stat()
+            scan = scan_text(text, str(path))
+            summary = redact_text(summarize(text))
+            if not scan["safe"]:
+                summary = "[redacted: note contains likely secrets]"
             matches.append(
                 {
-                    "path": path.relative_to(allowed).as_posix(),
+                    "path": redact_text(path.relative_to(allowed).as_posix()),
                     "modified_time": datetime.fromtimestamp(
                         stat.st_mtime
                     ).astimezone().isoformat(timespec="seconds"),
-                    "title": path.stem,
-                    "summary": summarize(text),
+                    "title": redact_text(path.stem),
+                    "summary": summary,
                     "score": score,
+                    "secret_scan_safe": scan["safe"],
+                    "secret_scan_findings": [] if scan["safe"] else scan["findings"],
                 }
             )
     matches.sort(key=lambda item: (item["score"], item["modified_time"]), reverse=True)
     result = {
-        "query": args.query,
-        "allowed_root": str(allowed),
+        "query": redact_text(args.query),
+        "allowed_root": redact_text(str(allowed)),
         "files_scanned": scanned,
         "scan_truncated": scanned >= args.max_files,
         "matched_notes": matches[: args.max_results],
@@ -74,9 +82,17 @@ def main() -> int:
     if args.format == "json":
         print(json.dumps(result, ensure_ascii=False, indent=2))
     else:
-        print(f"# Obsidian search: {args.query}\n")
+        print(f"# Obsidian search: {result['query']}\n")
         for item in result["matched_notes"]:
-            print(f"- `{item['path']}` ({item['modified_time']}): {item['summary']}")
+            safety = (
+                ""
+                if item["secret_scan_safe"]
+                else " [secret-scan unsafe; summary redacted]"
+            )
+            print(
+                f"- `{item['path']}` ({item['modified_time']}): "
+                f"{item['summary']}{safety}"
+            )
     return 0
 
 

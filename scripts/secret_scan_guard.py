@@ -37,6 +37,36 @@ PATTERNS = [
         re.compile(r"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b"),
     ),
     (
+        "jwt",
+        "high",
+        re.compile(
+            r"\beyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b"
+        ),
+    ),
+    (
+        "bearer_token",
+        "high",
+        re.compile(r"(?i)\bBearer\s+[A-Za-z0-9._~+/=-]{20,}\b"),
+    ),
+    (
+        "google_api_key",
+        "high",
+        re.compile(r"\bAIza[0-9A-Za-z_-]{35}\b"),
+    ),
+    (
+        "stripe_secret_key",
+        "high",
+        re.compile(r"\bsk_(?:live|test)_[A-Za-z0-9]{20,}\b"),
+    ),
+    (
+        "database_url",
+        "high",
+        re.compile(
+            r"(?i)\b(?:postgres(?:ql)?|mysql|mariadb|mongodb(?:\+srv)?|redis)"
+            r"://[^:\s/@]+:[^@\s/]+@[^\s]+"
+        ),
+    ),
+    (
         "credential_assignment",
         "high",
         re.compile(

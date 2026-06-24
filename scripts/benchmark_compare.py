@@ -14,6 +14,11 @@ from secret_scan_guard import redact_text
 
 
 NUMBER = re.compile(r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)")
+MAX_MATCHED_TEXT_LENGTH = 500
+
+
+def _redact_extraction_text(value: str) -> str:
+    return redact_text(str(value))[:MAX_MATCHED_TEXT_LENGTH]
 
 
 def run_once(
@@ -63,8 +68,8 @@ def run_once(
         "extraction": {
             "rule": rule,
             "value_regex": value_regex,
-            "matched_text": matched_text,
-            "matched_value": value,
+            "matched_text": _redact_extraction_text(matched_text),
+            "matched_value": redact_text(str(value)),
         },
     }
 

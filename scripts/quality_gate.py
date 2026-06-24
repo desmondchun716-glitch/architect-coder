@@ -12,6 +12,12 @@ from project_context_scan import scan_project
 from secret_scan_guard import redact_text
 
 
+PARTIAL_COMPLETION_NOTE = (
+    "partial means at least one quality category was skipped; do not report this "
+    "as fully passed"
+)
+
+
 def _overall_status(results: list[dict[str, Any]]) -> str:
     statuses = {item["status"] for item in results}
     if "failed" in statuses:
@@ -147,6 +153,7 @@ def main() -> int:
     report = {
         "root": str(root),
         "overall": overall,
+        "completion_note": PARTIAL_COMPLETION_NOTE if overall == "partial" else "",
         "shell_warning": (
             "Shell execution was explicitly enabled; commands must be reviewed."
             if allow_shell
@@ -162,6 +169,8 @@ def main() -> int:
     else:
         print("# Quality Gate\n")
         print(f"- Overall: `{report['overall']}`\n")
+        if report["completion_note"]:
+            print(f"- Note: {report['completion_note']}.\n")
         if report["shell_warning"]:
             print(f"- Shell execution: `enabled`; {report['shell_warning']}\n")
         print("| Check | Status | Exit | Seconds | Shell |")

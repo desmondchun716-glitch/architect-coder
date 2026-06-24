@@ -79,12 +79,64 @@
     "prompt": "Run a quality gate where tests pass but lint and typecheck are unavailable.",
     "must_match": [
       "\"overall\"\\s*:\\s*\"partial\"|Overall:\\s*`partial`",
+      "partial means at least one quality category was skipped|completion_note",
       "skipped_categories|skipped",
       "test"
     ],
     "must_not_match": [
       "\"overall\"\\s*:\\s*\"passed\"",
       "all quality checks passed"
+    ]
+  },
+  {
+    "id": "obsidian-read-redacts-secret-summary",
+    "prompt": "Search an allowed Obsidian project root where a normal matching Markdown note contains a likely API key.",
+    "must_match": [
+      "secret_scan_safe\"?\\s*[:=]\\s*false|secret-scan unsafe",
+      "summary\"?\\s*[:=].*redacted|summary redacted",
+      "secret_scan_findings|finding"
+    ],
+    "must_not_match": [
+      "sk-(proj-)?[A-Za-z0-9_-]{20,}",
+      "OPENAI_API_KEY\\s*="
+    ]
+  },
+  {
+    "id": "benchmark-success-redacts-matched-text",
+    "prompt": "Run a successful benchmark whose regex captures a numeric value from a line that also contains a likely API key.",
+    "must_match": [
+      "\"status\"\\s*:\\s*\"measured\"",
+      "\"rule\"\\s*:\\s*\"regex_capture\"",
+      "\"samples\"\\s*:\\s*\\[\\s*12\\.5",
+      "\\[REDACTED:openai_api_key\\]"
+    ],
+    "must_not_match": [
+      "sk-(proj-)?[A-Za-z0-9_-]{20,}"
+    ]
+  },
+  {
+    "id": "secret-scan-modern-token-patterns",
+    "prompt": "Scan text containing a fake JWT, Bearer token, Google API key, Stripe secret key, and database URL.",
+    "must_match": [
+      "\"safe\"\\s*:\\s*false",
+      "jwt",
+      "bearer_token",
+      "google_api_key",
+      "stripe_secret_key|database_url"
+    ],
+    "must_not_match": [
+      "safe\"\\s*:\\s*true"
+    ]
+  },
+  {
+    "id": "eval-contract-duplicate-id-fails",
+    "prompt": "Validate executable eval contracts where two contract objects use the same id.",
+    "must_match": [
+      "\"status\"\\s*:\\s*\"failed\"|Status:\\s*`failed`",
+      "duplicate contract id"
+    ],
+    "must_not_match": [
+      "\"status\"\\s*:\\s*\"passed\"|Status:\\s*`passed`"
     ]
   },
   {

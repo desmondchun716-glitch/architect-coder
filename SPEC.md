@@ -19,6 +19,19 @@ The skill now treats durable architecture decisions as agent-ready artifacts:
 - Obsidian ADR metadata can link decisions to governed files and verification
   status without creating a graph database or bulk code annotations.
 
+## v0.2.4 hardening contract
+
+The skill hardens safety and reliability without expanding runtime scope:
+
+- Obsidian read summaries must not expose secret-like content from otherwise
+  allowed Markdown notes;
+- benchmark extraction metadata must redact secret-like matched text even on
+  successful runs;
+- executable eval contract IDs must be unique;
+- high-confidence token scanning should cover common modern token forms without
+  noisy entropy heuristics;
+- partial quality gates must be clearly distinguishable from fully passed gates.
+
 ## Portability contract
 
 The skill is distributed as a portable Agent Skills package, not a Codex-only

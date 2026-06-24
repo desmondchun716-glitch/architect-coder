@@ -125,7 +125,9 @@ overwrite an existing note without explicit approval.
 Use the bundled scripts in this order:
 
 1. `obsidian_read.py` for bounded context retrieval.
-2. `obsidian_preview_write.py` to show the exact path, content hash, and content.
+2. `obsidian_preview_write.py` to show the exact path, content hash, and generated
+   content when safe; if secret scan fails, it omits full content and shows
+   finding metadata only.
 3. A matching write script only after write authority is clear and preview path/hash
    are accepted.
 
