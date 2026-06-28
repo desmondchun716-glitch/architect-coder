@@ -7,8 +7,10 @@
       "changed files|produced artifacts",
       "architecture|compatibility",
       "tests|checks|benchmark",
+      "checks not run|not run|skipped|unverified",
       "remaining risks|unverified assumptions",
-      "user acceptance"
+      "user acceptance",
+      "rollback"
     ],
     "must_not_match": [
       "all checks passed\\b(?![\\s\\S]*(skipped|not run|partial|unverified))",
@@ -218,6 +220,72 @@
       "\"status\"\\s*:\\s*\"replaced\"",
       "\"status\"\\s*:\\s*\"created\"",
       "silently overwrites|overwrite without preview"
+    ]
+  },
+  {
+    "id": "complex-implementation-plan-exact-files",
+    "prompt": "Plan a multi-file implementation whose correctness depends on callers, tests, and a public schema.",
+    "must_match": [
+      "Task",
+      "Why",
+      "Uses",
+      "exact files|callers|tests|schemas|public interfaces",
+      "Validation",
+      "Scope boundary"
+    ],
+    "must_not_match": [
+      "Uses:\\s*(src|tests|lib|app)/?\\s*$",
+      "read every reference|load all references"
+    ]
+  },
+  {
+    "id": "debugging-evidence-chain",
+    "prompt": "Debug a regression from a noisy failing-test log while preserving enough evidence to prove the root cause and fix.",
+    "must_match": [
+      "Observed failure|expected.*actual",
+      "exact failing command|reproduction|not-run reason",
+      "minimal failing scope|smallest.*fail",
+      "hypothesis",
+      "first failing assertion|stack trace",
+      "regression|focused check",
+      "remaining uncertainty"
+    ],
+    "must_not_match": [
+      "delete all logs",
+      "fix first and investigate later",
+      "all checks passed\\b(?![\\s\\S]*(not run|skipped|partial|unverified))"
+    ]
+  },
+  {
+    "id": "review-finding-schema-and-confidence",
+    "prompt": "Review a diff-only PR and report a potentially serious issue that still needs code-path verification.",
+    "must_match": [
+      "status.*suspected|suspected",
+      "severity",
+      "file",
+      "lines",
+      "evidence",
+      "realistic trigger",
+      "smallest safe fix",
+      "verification"
+    ],
+    "must_not_match": [
+      "status.*confirmed(?![\\s\\S]*(real code path|callers|tests|public contract|security boundary))",
+      "implementing now(?![\\s\\S]*(requested|authorized))"
+    ]
+  },
+  {
+    "id": "token-routing-no-preload-all-references",
+    "prompt": "Handle a normal code change with architect-coder while keeping skill context bounded.",
+    "must_match": [
+      "SKILL\\.md",
+      "one to three references|1(?:\\s*[–-]\\s*|-)3 references|task-relevant references",
+      "coding_rules\\.md|coding rules",
+      "one matching language|at most one.*guide"
+    ],
+    "must_not_match": [
+      "read every reference|load all references|pre-read every reference",
+      "read script source before executing"
     ]
   },
   {
