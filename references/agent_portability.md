@@ -41,8 +41,9 @@ and treat scripts/assets as local helpers rather than hidden instructions.
 
 ## Compatibility Rules
 
-- Keep `SKILL.md` frontmatter conservative: `name`, `description`, and portable
-  compatibility metadata are safe; provider-only controls need a SPEC note.
+- Keep `SKILL.md` frontmatter limited to `name` and `description` unless the
+  current Skill Creator specification explicitly allows additional keys. Put
+  portability notes in the body or `SPEC.md`, not frontmatter.
 - Prefer a new file in `references/` over long provider-specific instructions in
   `AGENTS.md` or `CLAUDE.md`.
 - If a provider supports extra tool allowlists or invocation controls, configure

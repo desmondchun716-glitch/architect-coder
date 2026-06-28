@@ -32,6 +32,23 @@ The skill hardens safety and reliability without expanding runtime scope:
   noisy entropy heuristics;
 - partial quality gates must be clearly distinguishable from fully passed gates.
 
+## v0.2.5 token-first execution routing contract
+
+The skill keeps `SKILL.md` as a compact runtime router:
+
+- normal tasks target `SKILL.md` plus one to three task-relevant references;
+- summaries, repository maps, snippets, script output, and notes are navigation
+  only;
+- full affected files and relevant callers, tests, schemas, migrations,
+  configuration, and public interfaces must be read before editing;
+- bundled scripts can run without loading their source; read script source only
+  when changing or debugging that script;
+- debugging and review protocols are conditional references, not default runtime
+  load.
+
+Regex contracts are deterministic smoke checks. Token savings, reference read
+sets, and coding-quality retention require paired trace or forward-test evidence.
+
 ## Portability contract
 
 The skill is distributed as a portable Agent Skills package, not a Codex-only
