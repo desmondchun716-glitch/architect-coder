@@ -1,4 +1,4 @@
 interface:
   display_name: "Architect Coder"
-  short_description: "给长期迭代产品的架构师工作流：读仓库、控风险、小步实现、沉淀 ADR / Architecture workflow for growing products"
-  default_prompt: "Use $architect-coder for this non-trivial repository task. Clarify blocking decisions, make the smallest authorized change if implementation is requested, run proportionate checks, and finish with evidence-backed acceptance."
+  short_description: "Architecture-first coding, debugging, review, and evidence"
+  default_prompt: "Use $architect-coder for this non-trivial repository task. Load only task-relevant references, read full affected code paths before editing, make the smallest authorized change, run proportionate checks, and report evidence honestly."

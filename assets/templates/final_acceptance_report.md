@@ -6,6 +6,14 @@
 
 ## Architecture and compatibility impact
 
+## Evidence summary
+
+- Status:
+- Checks run:
+- Checks not run:
+- Risks:
+- Rollback:
+
 ## Checks
 
 | Check | Result | Evidence |
